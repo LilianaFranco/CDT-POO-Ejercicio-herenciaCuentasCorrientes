@@ -1,12 +1,20 @@
-class Cuenta {
+abstract class Cuenta implements CompareTo {
+
+    //Atributos
     private String numero;
+    private Persona titular;
     protected double saldo;
 
-    public Cuenta(String numero, double saldo) {
+
+
+    //Constructor
+    public Cuenta(String numero, double saldo, Persona titular) {
         this.numero = numero;
         this.saldo = saldo;
+        this.titular = titular;
     }
 
+    //Getters and Setters
     public double getSaldo() {
         return saldo;
     }
@@ -15,9 +23,18 @@ class Cuenta {
         return numero;
     }
 
+    //Métodos
     public void extraer(double importe) {
         if (importe <= saldo)
             saldo -= importe;
+    }
+
+    public Persona getTitular() {
+        return titular;
+    }
+
+    public void setTitular(Persona titular) {
+        this.titular = titular;
     }
 
     public void depositar(double importe) {
@@ -46,4 +63,12 @@ class Cuenta {
             }
         }
     }
+
+    @Override
+    public String toString() {
+        return "\n" + "Numero de cuenta: " + numero + ", " + "Saldo: " + saldo;
+    }
+
+    @Override
+    public abstract int compareTo(Object object);
 }

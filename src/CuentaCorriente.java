@@ -1,11 +1,15 @@
 public class CuentaCorriente extends Cuenta{
+
+    //Atributos
     private Double descubierto;
 
-    public CuentaCorriente(String numero, double saldo, double descubierto) {
-        super(numero, saldo);
+    //Constructor
+    public CuentaCorriente(String numero, double saldo, Persona titular, double descubierto) {
+        super(numero, saldo, titular);
         this.descubierto = 1000.0;
     }
 
+    //Get and Set
     public void setDescubierto(double descubierto){
         this.descubierto = descubierto;
     }
@@ -14,6 +18,7 @@ public class CuentaCorriente extends Cuenta{
         return descubierto;
     }
 
+    //Métodos
     @Override
     public void extraer(double importe){
         if (importe<saldo+descubierto){
@@ -29,5 +34,9 @@ public class CuentaCorriente extends Cuenta{
         if (1000.0 < saldo + descubierto) {
             this.saldo = saldo - 1000.0;
         }
+    }
+    @Override
+    public int compareTo(Object object) {
+        return 0;
     }
 }
